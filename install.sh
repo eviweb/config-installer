@@ -10,6 +10,11 @@ main_dir()
     dirname "$(readlink -f "${BASH_SOURCE}")"
 }
 
+config_dir()
+{
+    echo "$(main_dir)/config"
+}
+
 config_copy_dir()
 {
     echo "$(main_dir)/config/copy"
@@ -64,12 +69,9 @@ find_files()
 get_target_file()
 {
     local sourcefile="$1"
-
-    if [[ "${sourcefile}" =~ \/common ]]; then
-        echo "${sourcefile/*\/common/}"
-    else
-        echo "${sourcefile/*\/${HOSTNAME}/}"
-    fi    
+    local configdir="$(config_dir)"
+    
+    echo "${sourcefile}" | sed -r "s/${configdir//\//\\\/}\/[^\/]+\/(common|${HOSTNAME})//"
 }
 
 ensure_parent_dir()
