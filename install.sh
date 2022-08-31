@@ -63,7 +63,7 @@ find_files()
 {
     local directory="$1"
 
-    find "${directory}" -type f -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \)
+    find "${directory}" \( -type f -or -type l \) -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \)
 }
 
 get_target_file()
