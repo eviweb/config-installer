@@ -3,6 +3,28 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.1](https://github.com/eviweb/config-installer/compare/0.1.0..0.1.1) - 2022-08-31
+
+### Bug Fixes
+
+- 🐛 get_target_file to accept 'common' or current hostname in file path - ([4511484](https://github.com/eviweb/config-installer/commit/451148404cd44bb3e35604c36cc45e4cbd0f893b)) - [@eviweb](https://github.com/eviweb)
+
+### Miscellaneous Chores
+
+- 🧹 set version number to 0.1.1 - ([0268b9c](https://github.com/eviweb/config-installer/commit/0268b9c1efac2ebb997f6b88e53e68bf98927300)) - [@eviweb](https://github.com/eviweb)
+
+### Tests
+
+- ✅ add assert_equals function to check two strings are equal - ([ec2b28f](https://github.com/eviweb/config-installer/commit/ec2b28fce185e074a17e324ea776c7a17eedfab4)) - [@eviweb](https://github.com/eviweb)
+- ✅ extract install tests to a dedicated file, revamp tests/run.sh - ([b5b8af9](https://github.com/eviweb/config-installer/commit/b5b8af981b29fa8813b404425d6893be2b7bbcd3)) - [@eviweb](https://github.com/eviweb)
+
+### Typo correction
+
+- ✏️  fix Markdown style in README.md - ([30b3c2f](https://github.com/eviweb/config-installer/commit/30b3c2f86d7fb555b6b6edc8bae553c9bf36fb35)) - [@eviweb](https://github.com/eviweb)
+
+- - -
+
+
 ## [0.1.0](https://github.com/eviweb/config-installer/compare/d9c27528646bb173d175d5687ff76f65761c69bd..0.1.0) - 2022-08-30
 
 ### Features
