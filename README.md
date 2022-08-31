@@ -24,4 +24,5 @@ Every files in:
 > Pkease note that the `common` namespace is used to share configurations across many hosts, while using a `HOSTNAME` namespace permits to dedicate configurations to a specific host.
 
 ## License
+
 This project is licensed under the terms of the [MIT License](/LICENSE).
