@@ -63,7 +63,7 @@ find_files()
 {
     local directory="$1"
 
-    find "${directory}" \( -type f -or -type l \) -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \)
+    find "${directory}" \( -type f -or -type l \) -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \) | sort
 }
 
 get_target_file()
@@ -94,7 +94,7 @@ assert_same_source()
     local source="$1"
     local link="$2"
 
-    [ "${source}" == "$(readlink -f "${link}")" ]
+    [ "${source}" == "$(readlink "${link}")" ]
 }
 
 is_sourced()
@@ -124,7 +124,8 @@ copy_files()
         ensure_parent_dir "${targetfile}"
         cp -a "${OVERWRITING}" "${file}" "${targetfile}"
 
-        if assert_same_file "${file}" "${targetfile}"; then
+        if ([[ -h "${targetfile}" ]] && assert_same_source "${file}" "${targetfile}") ||
+            ([[ -f "${targetfile}" ]] && assert_same_file "${file}" "${targetfile}"); then
             msg="${msg}: \e[32mSucceed\e[0m"
         else
             msg="${msg}: \e[31mFailed\e[0m"
