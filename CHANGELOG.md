@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.3](https://github.com/eviweb/config-installer/compare/0.1.2..0.1.3) - 2022-09-01
+
+### Bug Fixes
+
+- 🐛 success message for symlinks - ([f241039](https://github.com/eviweb/config-installer/commit/f2410397e5cf5aa23eb2750f0e5a020a59b72a96)) - [@eviweb](https://github.com/eviweb)
+
+### Miscellaneous Chores
+
+- 🧹 set version number to 0.1.3 - ([5e35f14](https://github.com/eviweb/config-installer/commit/5e35f1494f3c25552016559a029dd5c9e866cdb9)) - [@eviweb](https://github.com/eviweb)
+
+- - -
+
+
 ## [0.1.2](https://github.com/eviweb/config-installer/compare/0.1.1..0.1.2) - 2022-08-31
 
 ### Bug Fixes
