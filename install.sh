@@ -158,9 +158,16 @@ link_files()
     done
 }
 
+find_scripts()
+{
+    local priority="$1"
+
+    find "$(config_run_dir)" -path "*/$1/*" -and \( -name "*.sh" -or -name "*.bash" \) -executable | sort
+}
+
 run_scripts()
 {
-    local scripts=( $(find_files "$(config_run_dir)") )
+    local scripts=( $@ )
     local msg=""
     local result
 
@@ -198,6 +205,17 @@ if ! is_sourced; then
         esac
     done
 
+    before_scripts=(
+        $(find_scripts "before")
+    )
+
+    if [ 0 -lt "${#before_scripts[@]}" ]; then
+        log "\e[34mRun configuration scripts...\e[0m"
+        run_scripts "${before_scripts[@]}"
+    else
+        log "\e[34mNothing to execute\e[0m"
+    fi
+
     if [ -d "$(config_copy_dir)" ]; then
         log "\e[34mCopy configuration files...\e[0m"
         copy_files
@@ -212,9 +230,13 @@ if ! is_sourced; then
         log "\e[34mNothing to link\e[0m"
     fi
 
-    if [ -d "$(config_run_dir)" ]; then
+    after_scripts=(
+        $(find_scripts "after")
+    )
+
+    if [ 0 -lt "${#after_scripts[@]}" ]; then
         log "\e[34mRun configuration scripts...\e[0m"
-        run_scripts
+        run_scripts "${after_scripts[@]}"
     else
         log "\e[34mNothing to execute\e[0m"
     fi

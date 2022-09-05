@@ -18,8 +18,10 @@ Every files in:
 * `config/copy/[HOSTNAME]/[TARGET_PATH]`: are copied to *[TARGET_PATH]* only if *[HOSTNAME]* corresponds to the current `${HOSTNAME}`
 * `config/link/common/[TARGET_PATH]`: are symlinked to *[TARGET_PATH]*
 * `config/link/[HOSTNAME]/[TARGET_PATH]`: are symlinked to *[TARGET_PATH]* only if *[HOSTNAME]* corresponds to the current `${HOSTNAME}`
-* `config/run/common`: are executed
-* `config/run/[HOSTNAME]`: are executed only if *[HOSTNAME]* corresponds to the current `${HOSTNAME}`
+* `config/run/common/after`: are executed after all other actions on all hosts
+* `config/run/[HOSTNAME]/after`: are executed after all other actions only if *[HOSTNAME]* corresponds to the current `${HOSTNAME}`
+* `config/run/common/before`: are executed before all other actions on all hosts
+* `config/run/[HOSTNAME]/before`: are executed before all other actions only if *[HOSTNAME]* corresponds to the current `${HOSTNAME}`
 
 > Pkease note that the `common` namespace is used to share configurations across many hosts, while using a `HOSTNAME` namespace permits to dedicate configurations to a specific host.
 
