@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.2.0](https://github.com/eviweb/config-installer/compare/0.1.3..0.2.0) - 2022-09-05
+
+### Bug Fixes
+
+- 🐛 misspelled config_run_dir - ([994a7b1](https://github.com/eviweb/config-installer/commit/994a7b182c1702a6d4d4f0990d3d3ab43f1a5477)) - [@eviweb](https://github.com/eviweb)
+
+### Features
+
+- ✨ enforce execution order to run common namespace first - ([6c19044](https://github.com/eviweb/config-installer/commit/6c19044b2dfcebb99cfd9a13fc4af23d91101c82)) - [@eviweb](https://github.com/eviweb)
+- ✨ add before and after hooks for exectuable scripts - ([18629f8](https://github.com/eviweb/config-installer/commit/18629f896ee2fa10bd5a19c62fb164d2273e06d5)) - [@eviweb](https://github.com/eviweb)
+
+### Miscellaneous Chores
+
+- 🧹 set version number to 0.2.0 - ([1ab505d](https://github.com/eviweb/config-installer/commit/1ab505dbb050aed4187cf5cbbbd730578b05fd8e)) - [@eviweb](https://github.com/eviweb)
+
+- - -
+
+
 ## [0.1.3](https://github.com/eviweb/config-installer/compare/0.1.2..0.1.3) - 2022-09-01
 
 ### Bug Fixes
