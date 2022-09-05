@@ -25,6 +25,23 @@ Every files in:
 
 > Pkease note that the `common` namespace is used to share configurations across many hosts, while using a `HOSTNAME` namespace permits to dedicate configurations to a specific host.
 
+### Execution order
+
+The `common` namespace takes precedence over `HOSTNAME` namespace, so every actions under the `common` namespaces are executed first.
+
+Actions are executed as follows:
+
+1. `config/run/common/before`
+2. `config/run/[HOSTNAME]/before`
+3. `config/copy/common/[TARGET_PATH]`
+4. `config/copy/[HOSTNAME]/[TARGET_PATH]`
+5. `config/link/common/[TARGET_PATH]`
+6. `config/link/[HOSTNAME]/[TARGET_PATH]`
+7. `config/run/common/after`
+8. `config/run/[HOSTNAME]/after`
+
+> Pkease note that inside a same namespace, actions are executed in alphabetical order based on their respective paths.
+
 ## License
 
 This project is licensed under the terms of the [MIT License](/LICENSE).

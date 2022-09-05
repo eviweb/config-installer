@@ -1,11 +1,18 @@
 . "$(main_dir)"/install.sh
 
-export HOSTNAME="hostname1"
+hostnames=(
+    'anotherhostname'
+    'hostname1'
+)
 
-log "> Run install script..."
-"$(main_dir)"/install.sh -v
-log "  \e[32mDone\e[0m"
+for hostname in "${hostnames[@]}"; do
+    export HOSTNAME="${hostname}"
 
-log "> Clean up test env..."
-[ -d "/tmp/my" ] && rm -rf "/tmp/my"
-log "  \e[32mDone\e[0m"
+    log "> Run install script..."
+    "$(main_dir)"/install.sh -v
+    log "  \e[32mDone\e[0m"
+
+    log "> Clean up test env..."
+    [ -d "/tmp/my" ] && rm -rf "/tmp/my"
+    log "  \e[32mDone\e[0m"
+done

@@ -59,11 +59,18 @@ usage()
 USAGE
 }
 
+sort_files()
+{
+    local files=( $@ )
+
+    printf '%s\n' "${files[@]}" | sed -r 's/common/000000/g' | sort | sed -r 's/000000/common/g'
+}
+
 find_files()
 {
     local directory="$1"
 
-    find "${directory}" \( -type f -or -type l \) -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \) | sort
+    sort_files "$(find "${directory}" \( -type f -or -type l \) -and \( -path "*/common/*" -or -path "*/${HOSTNAME}/*" \))"
 }
 
 get_target_file()
@@ -162,7 +169,7 @@ find_scripts()
 {
     local priority="$1"
 
-    find "$(config_run_dir)" -path "*/$1/*" -and \( -name "*.sh" -or -name "*.bash" \) -executable | sort
+    sort_files "$(find "$(config_run_dir)" \( -path "*/common/${priority}/*" -or -path "*/${HOSTNAME}/${priority}/*" \) -and \( -name "*.sh" -or -name "*.bash" \) -executable)"
 }
 
 run_scripts()
