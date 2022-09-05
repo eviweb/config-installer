@@ -212,7 +212,7 @@ if ! is_sourced; then
         log "\e[34mNothing to link\e[0m"
     fi
 
-    if [ -d "$(config_link_dir)" ]; then
+    if [ -d "$(config_run_dir)" ]; then
         log "\e[34mRun configuration scripts...\e[0m"
         run_scripts
     else
