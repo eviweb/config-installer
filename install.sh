@@ -54,6 +54,7 @@ usage()
         Options:
             -f              force overwriting files
             -h              display this help message
+            -i              initialize the current project directory
             -V              display the version number
             -v              set verbosity level, can be used multiple times            
 USAGE
@@ -193,15 +194,22 @@ run_scripts()
     done
 }
 
+initialize()
+{
+    mkdir -p "$(main_dir)"/config/{copy,link,run}
+}
+
 if ! is_sourced; then
     VERBOSITY=0
     OVERWRITING="-i"
 
-    while getopts "fhVv" option; do
+    while getopts "fhiVv" option; do
         case "${option}" in
             f)  OVERWRITING="-f"
                 ;;
             h)  usage && exit 0
+                ;;
+            i)  initialize && exit $?
                 ;;
             V)  version && exit 0
                 ;;
