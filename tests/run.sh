@@ -94,7 +94,8 @@ function assert_file_exists {
     return $result
 }
 
-TESTS=($(get_test_files))
+TESTS=( $@ )
+[[ "${#TESTS[@]}" -gt 0 ]] || TESTS=($(get_test_files))
 
 for test in "${TESTS[@]}"; do
     echo -e "\n** \e[2mRun ${test}\e[0m **\n"
