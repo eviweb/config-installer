@@ -44,6 +44,56 @@ function assert_equals {
     return $result
 }
 
+# Assert a directory exists
+#
+# Usage:
+#   assert_dir_exists "/path/to/directory" "message"
+function assert_dir_exists {
+    local dir="$1"
+    local message="$2"
+    local fails="\u2718"
+    local succeed="\u2714"
+    local result=0
+
+    [ -n "${message}" ] || {
+        message="Assert the directory \e[34m'${dir}'\e[0m exists."
+    }
+
+    if [ -d "${dir}" ]; then
+        echo -e "\e[32m${succeed}\e[0m ${message}"
+    else
+        result=1
+        echo -e "\e[31m${fails}\e[0m ${message}"
+    fi
+
+    return $result
+}
+
+# Assert a file exists
+#
+# Usage:
+#   assert_file_exists "/path/to/file" "message"
+function assert_file_exists {
+    local file="$1"
+    local message="$2"
+    local fails="\u2718"
+    local succeed="\u2714"
+    local result=0
+
+    [ -n "${message}" ] || {
+        message="Assert the file \e[34m'${file}'\e[0m exists."
+    }
+
+    if [ -f "${file}" ]; then
+        echo -e "\e[32m${succeed}\e[0m ${message}"
+    else
+        result=1
+        echo -e "\e[31m${fails}\e[0m ${message}"
+    fi
+
+    return $result
+}
+
 TESTS=($(get_test_files))
 
 for test in "${TESTS[@]}"; do
