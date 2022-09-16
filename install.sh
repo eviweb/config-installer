@@ -4,6 +4,7 @@
 #
 
 VERSION="0.2.0"
+REMOTE_INSTALLER="https://raw.githubusercontent.com/eviweb/config-installer/main/install.sh"
 
 main_dir()
 {
@@ -199,6 +200,37 @@ initialize()
     mkdir -p "$(main_dir)"/config/{copy,link,run}
 }
 
+get_latest_version()
+{
+    curl -Ls "${REMOTE_INSTALLER}" | grep -Poe '\d+\.\d+\.\d+'
+}
+
+should_update()
+{
+    local compareversions=( "${VERSION}" $@ )
+
+    test "$(echo "${compareversions[@]}" | tr " " "\n" | sort -rV | head -n 1)" != "${VERSION}";
+}
+
+check_for_update()
+{
+    local latestversion="$(get_latest_version)"
+    local answer=""
+
+    if should_update "${latestversion}"; then
+        while ! [[ "${answer}" =~ ^[YyNn] ]]; do
+            read -p "A new version is available, do you want to update? (y/n)" answer
+        done
+
+        [[ "${answer}" =~ ^[Nn] ]] || {
+            log "Start updating..."
+            curl -Ls "${REMOTE_INSTALLER}" -o "$(main_dir)"/install.sh
+            log "Done, please restart the installer."
+            exit 0
+        }
+    fi
+}
+
 if ! is_sourced; then
     VERBOSITY=0
     OVERWRITING="-i"
@@ -219,6 +251,8 @@ if ! is_sourced; then
                 ;;
         esac
     done
+
+    check_for_update
 
     before_scripts=(
         $(find_scripts "before")
