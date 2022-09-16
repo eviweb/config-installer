@@ -3,6 +3,25 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.3.0](https://github.com/eviweb/config-installer/compare/0.2.0..0.3.0) - 2022-09-16
+
+### Features
+
+- ✨ add auto updater - ([1936add](https://github.com/eviweb/config-installer/commit/1936addf186b32150bc976b30dafe78f90e6bcc6)) - [@eviweb](https://github.com/eviweb)
+- ✨ add -i flag to initialize the project directory with the default directory structure - ([1652dde](https://github.com/eviweb/config-installer/commit/1652dde4fc3137260881579ce1a5c2946fe43f7c)) - [@eviweb](https://github.com/eviweb)
+
+### Miscellaneous Chores
+
+- 🧹 set version number to 0.3.0 - ([956a4a7](https://github.com/eviweb/config-installer/commit/956a4a742f28a3054cc8173446fbb402ec6b9e0c)) - [@eviweb](https://github.com/eviweb)
+
+### Tests
+
+- ✅ the test runner now accepts a list of test files - ([f7d741a](https://github.com/eviweb/config-installer/commit/f7d741a2f8500b9d83fea8ee2a4e45a75e727d70)) - [@eviweb](https://github.com/eviweb)
+- ✅ add assert_dir_exists and assert_file_exists assertions - ([8c3d7b2](https://github.com/eviweb/config-installer/commit/8c3d7b226f7640f2d328df38f2e34a6af52a7c07)) - [@eviweb](https://github.com/eviweb)
+
+- - -
+
+
 ## [0.2.0](https://github.com/eviweb/config-installer/compare/0.1.3..0.2.0) - 2022-09-05
 
 ### Bug Fixes
