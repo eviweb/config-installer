@@ -3,7 +3,7 @@
 # Configuration Installer
 #
 
-VERSION="0.2.0"
+VERSION="0.3.0"
 REMOTE_INSTALLER="https://raw.githubusercontent.com/eviweb/config-installer/main/install.sh"
 
 main_dir()
